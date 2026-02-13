@@ -1,2 +1,3 @@
 week-1: https://docs.google.com/document/d/1J1SZAzCOcDA0Z7x_Ebp4-i30ZzQ3MJftKIJQW1p1EQ0/edit?tab=t.0
 week-2: https://docs.google.com/document/d/132Xx7DmZV7lMJhNMVT-p4bd9Rgz2cFfFnjRFlU90fCQ/edit?pli=1&tab=t.0
+week-3: https://docs.google.com/document/d/1qNPBgXiN1esLu9B-tUnJCuIsenfLcJ3C3j7cu42eCQ8/edit?usp=drive_link
