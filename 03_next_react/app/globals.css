@@ -6,3 +6,15 @@ header {
   font-size: larger;
   padding: 2rem;
 }
+.btn-page {
+  padding: 0.2rem 0.4rem;
+  width: fit-content;
+  font-size: lg;
+  cursor: pointer;
+  border: 1px solid whitesmoke;
+  border-radius: 0.4rem;
+}
+.pagination-wrapper {
+  display: flex;
+  align-content: center;
+}

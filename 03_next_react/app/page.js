@@ -1,27 +1,52 @@
 "use client";
-import Card from "@/components/Card";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function page() {
-  const [movies, setMovies] = useState(null);
-
-  useState(async () => {
-    const res = await fetch(
-      "https://api.jsonbin.io/v3/qs/698e966543b1c97be97af944",
-    );
-    const movies = await res.json();
-    setMovies(movies.record);
-  }, []);
-  console.log(movies);
-
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+  useEffect(() => {
+    setLoading(true);
+    let url = `https://www.melivecode.com/api/users`;
+    if (page) url = `${url}?page=${page}&per_page=10`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        setUsers(json);
+        setLoading(false);
+      });
+  }, [page]);
   return (
-    <main>
-      <header>Sai Lin Hte ID-6807665</header>
-      <div className="cards-container">
-        {movies?.map((movie) => (
-          <Card {...movie} key={movie.id} />
-        ))}
+    <div>
+      <header>Sai Lin Htet ID-6807665</header>
+      <div>User</div>
+      <div className="pagination-wrapper">
+        {page <= 1 || (
+          <div className="btn-page" onClick={() => setPage(page - 1)}>
+            Previous
+          </div>
+        )}
+        Page: {page}
+        {page < users.total_pages ? (
+          <div className="btn-page" onClick={() => setPage(page + 1)}>
+            Next
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
-    </main>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <ul>
+          {users.data.map((u) => (
+            <li key={u.id} className="img-container">
+              <img src={u.avatar} width={25} /> {u.fname} {u.lname} (
+              {u.username})
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
